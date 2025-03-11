@@ -7,8 +7,14 @@ from blog.forms import CommentForm
 
 import logging
 logger = logging.getLogger(__name__)
+
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
+
 # Create your views here.
 
+@cache_page(300)
+@vary_on_headers("Cookie")
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now())
   logger.debug("Got %d posts", len(posts))
