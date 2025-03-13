@@ -16,7 +16,7 @@ from django.views.decorators.vary import vary_on_headers
 @cache_page(300)
 @vary_on_headers("Cookie")
 def index(request):
-  posts = Post.objects.filter(published_at__lte=timezone.now()).select_related('author')
+  posts = Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
   logger.debug("Got %d posts", len(posts))
   return render(request, "blog/index.html", {"posts" : posts})
 
