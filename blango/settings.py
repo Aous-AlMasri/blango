@@ -51,6 +51,7 @@ class Dev(Configuration):
         "crispy_bootstrap5",
         'blog',
         'debug_toolbar',
+        'blango_auth',
     ]
 
     LOGGING = {
@@ -105,6 +106,8 @@ class Dev(Configuration):
       'django.contrib.messages.middleware.MessageMiddleware',
       #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
+
+    AUTH_USER_MODEL = "blango_auth.User"
 
     INTERNAL_IPS = ['192.168.11.179']
 
