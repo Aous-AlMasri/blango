@@ -215,7 +215,7 @@ class Dev(Configuration):
 
     LANGUAGE_CODE = 'en-us'
 
-    TIME_ZONE = values.Value("UTC")
+    TIME_ZONE = values.Value("Asia/Damascus")
 
     USE_I18N = True
 
