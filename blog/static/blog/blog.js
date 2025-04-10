@@ -1,45 +1,11 @@
-class Greeter {
-  constructor (name) {
-    this.name = name
-  }
+console.log("1. Start");
 
-  getGreeting() {
-    if (this.name === undefined) {
-      return 'hello, no name'
-    }
-    return 'hello, ' + this.name
-  }
+setTimeout(() => {
+  console.log("2. setTimeout");
+}, 0);
 
-  showGreeting (greetMessage) {
-    console.log(greetMessage)
-  }
+Promise.resolve().then(() => {
+  console.log("3. Promise then");
+});
 
-  greet() {
-    this.showGreeting(this.getGreeting())
-  }
-}
-
-class DelayedGreeter extends Greeter {
-  delay = 2000
-
-  constructor (name, delay) {
-    super(name)
-    if (delay !== undefined) {
-      this.delay = delay
-    }
-  }
-
-  greet () {
-    setTimeout(() => {
-      this.showGreeting(this.getGreeting())
-    }, this.delay)
-  }
-}
-
-const dg1 = new DelayedGreeter('aous', 6000)
-
-dg1.greet()
-
-const dg2 = new DelayedGreeter('omar')
-
-dg2.greet()
+console.log("4. End");
