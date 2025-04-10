@@ -1,11 +1,37 @@
-console.log("1. Start");
+class ClickButton extends React.Component {
+  state = {
+    wasClicked: false
+  }
 
-setTimeout(() => {
-  console.log("2. setTimeout");
-}, 0);
+  hanldeClick() {
+    this.setState(
+      {wasClicked: true}
+    )
+  }
 
-Promise.resolve().then(() => {
-  console.log("3. Promise then");
-});
+  render() {
+    let buttonText
 
-console.log("4. End");
+    if (this.state.wasClicked)
+      buttonText = 'Clicked!'
+    else
+      buttonText = "Click Me"
+
+    return React.createElement(
+      'button',
+      {
+        className: 'btn btn-primary mt-2',
+        onClick: () => {
+          this.hanldeClick()
+        }
+      },
+      buttonText
+    )
+  }
+}
+
+const domContainer = document.getElementById('react_root')
+ReactDOM.render(
+  React.createElement(ClickButton),
+  domContainer
+)
